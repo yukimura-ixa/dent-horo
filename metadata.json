@@ -1,0 +1,6 @@
+{
+  "name": "Dental Horoscope",
+  "description": "A dental hygiene card game for LINE LIFF where players draw horoscope-themed missions from a shared global deck.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

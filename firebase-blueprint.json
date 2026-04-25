@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "DailyDeck": {
+      "title": "Daily Deck",
+      "description": "Tracks which cards have been picked by all users on a specific day to prevent duplicates.",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "The date in YYYY-MM-DD format"
+        },
+        "pickedCardIds": {
+          "type": "array",
+          "description": "List of mission IDs picked today"
+        }
+      },
+      "required": ["date", "pickedCardIds"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A player of the game",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "pickedCardsHistory": {
+          "type": "array"
+        },
+        "lastPickedDate": {
+          "type": "string"
+        },
+        "lastMissionId": {
+          "type": "string"
+        }
+      },
+      "required": ["displayName", "pickedCardsHistory", "lastPickedDate", "lastMissionId"]
+    }
+  },
+  "firestore": {
+    "/daily_decks/{deckDate}": {
+      "schema": {
+        "$ref": "#/entities/DailyDeck"
+      },
+      "description": "Daily deck state tracking global available cards."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "User profile and state."
+    }
+  }
+}
